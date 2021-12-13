@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const firestore = require("firebase/firestore");
-
 const db = firestore.getFirestore();
 
 router.get("/", (req, res) => {
@@ -12,7 +11,9 @@ router.get("/", (req, res) => {
   post
     .then((response) => {
       response.forEach((doc) => {
-        postArray.push(doc.data());
+        const docData = dic.data();
+        docData.id = doc.id;
+        postArray.push(docData);
       });
       return res.send(postArray);
     })
