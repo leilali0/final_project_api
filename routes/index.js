@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
   post
     .then((response) => {
       response.forEach((doc) => {
-        const docData = dic.data();
+        const docData = doc.data();
         docData.id = doc.id;
         postArray.push(docData);
       });
