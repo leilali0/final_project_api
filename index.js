@@ -19,6 +19,8 @@ firebase.initializeApp(firebaseConfig);
 
 const indexRoute = require("./routes/index");
 const createPostRoute = require("./routes/createPost");
+const singlePostRoute = require("./routes/post");
+const userPostsRoute = require("./routes/userPost");
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -41,6 +43,8 @@ app.use(function (req, res, next) {
 app.use("/", indexRoute);
 // Submit new post
 app.use("/create", createPostRoute);
+app.use("/post", singlePostRoute);
+app.use("/user", userPostsRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
